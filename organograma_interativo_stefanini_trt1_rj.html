@@ -198,7 +198,7 @@
                         <span class="flex items-center gap-2">
                             <span class="h-2.5 w-2.5 rounded-full bg-stefaniniCyan"></span> Rio de Janeiro
                         </span>
-                        <span class="text-xs bg-stefaniniCyan/10 text-stefaniniCyan px-2 py-0.5 rounded-md" id="count-all">12</span>
+                        <span class="text-xs bg-stefaniniCyan/10 text-stefaniniCyan px-2 py-0.5 rounded-md" id="count-all">13</span>
                     </div>
                 </div>
             </div>
@@ -218,7 +218,7 @@
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Estatísticas Operacionais</h3>
                 <div class="grid grid-cols-2 gap-3">
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg">
-                        <span class="text-2xl font-bold text-white" id="stat-total">12</span>
+                        <span class="text-2xl font-bold text-white" id="stat-total">13</span>
                         <span class="block text-[10px] uppercase text-slate-400">Integrantes</span>
                     </div>
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg">
@@ -365,14 +365,15 @@
                 { id: 'A8', name: 'Lucas Marques Ximenes', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Lucas Marques Ximenes - Analkista de Suporte Jr.png' },
                 { id: 'A9', name: 'Luiz Felipe Lamas da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Luiz Felipe Lamas da Silva - Analkista de Suporte Jr.jpg' },
                 { id: 'A10', name: 'Luiz Gustavo Marques da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Luiz Gustavo Marques da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A11', name: 'Rosemere Pinheiro da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' }
+                { id: 'A11', name: 'Rosemere Pinheiro da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' },
+                { id: 'A12', name: 'Vicente Luis de Souza', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Vicente Luis de Souza - Analkista de Suporte Jr.png' }
             ]
         };
 
         // Load persisted data if exists
-        if(localStorage.getItem('stefanini_trt1_org_v6')) {
+        if(localStorage.getItem('stefanini_trt1_org_v7')) {
             try {
-                teamData = JSON.parse(localStorage.getItem('stefanini_trt1_org_v6'));
+                teamData = JSON.parse(localStorage.getItem('stefanini_trt1_org_v7'));
             } catch(e) {
                 console.warn("Could not load stored organogram data, falling back to defaults.");
             }
@@ -570,7 +571,7 @@
             delete preview.dataset.tempAvatar;
 
             // Save to LocalStorage for persistence
-            localStorage.setItem('stefanini_trt1_org_v6', JSON.stringify(teamData));
+            localStorage.setItem('stefanini_trt1_org_v7', JSON.stringify(teamData));
 
             // Refresh DOM Elements
             renderOrganogram();
