@@ -6,6 +6,8 @@
     <title>Organograma Stefanini - TRT1 RJ</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PptxGenJS Bundle -->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs/dist/pptxgen.bundle.js"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts (Inter) -->
@@ -181,6 +183,10 @@
                 <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-stefaniniMagenta to-pink-600 hover:opacity-90 text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-md">
                     <i class="fa-solid fa-code"></i> <span>Ver Mermaid.js</span>
                 </button>
+                
+                <button onclick="exportToPowerPoint()" class="px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:opacity-90 text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-md" id="btn-export-pptx" title="Exportar para PowerPoint">
+                    <i class="fa-solid fa-file-powerpoint"></i> <span>Gerar PPTX</span>
+                </button>
             </div>
         </div>
     </header>
@@ -190,15 +196,15 @@
         
         <!-- SIDEBAR CONTROLS & LIVE MERMAID (LEFT) -->
         <aside class="w-80 border-r border-slate-800 bg-stefaniniMidnight/70 p-6 flex flex-col gap-6 overflow-y-auto hidden md:flex" id="control-sidebar">
-            <!-- Filter Section -->
+            <!-- Location Section -->
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-stefaniniCyan mb-3">Localidade</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-stefaniniCyan mb-3">Localidade da Equipe</h3>
                 <div class="flex flex-col gap-2">
-                    <div class="w-full px-4 py-2.5 text-left text-sm rounded-lg border border-stefaniniCyan/30 bg-stefaniniDark/50 text-white flex items-center justify-between">
+                    <div class="w-full px-4 py-2.5 text-left text-sm rounded-lg border border-stefaniniCyan bg-stefaniniDark/50 text-white flex items-center justify-between">
                         <span class="flex items-center gap-2">
                             <span class="h-2.5 w-2.5 rounded-full bg-stefaniniCyan"></span> Rio de Janeiro
                         </span>
-                        <span class="text-xs bg-stefaniniCyan/10 text-stefaniniCyan px-2 py-0.5 rounded-md" id="count-all">13</span>
+                        <span class="text-xs bg-stefaniniCyan/10 text-stefaniniCyan px-2 py-0.5 rounded-md" id="count-all">16</span>
                     </div>
                 </div>
             </div>
@@ -218,11 +224,11 @@
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Estatísticas Operacionais</h3>
                 <div class="grid grid-cols-2 gap-3">
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg">
-                        <span class="text-2xl font-bold text-white" id="stat-total">13</span>
+                        <span class="text-2xl font-bold text-white" id="stat-total">12</span>
                         <span class="block text-[10px] uppercase text-slate-400">Integrantes</span>
                     </div>
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg">
-                        <span class="text-2xl font-bold text-stefaniniCyan">N1</span>
+                        <span class="text-2xl font-bold text-stefaniniCyan">N2/N3</span>
                         <span class="block text-[10px] uppercase text-slate-400">Nível Técnico</span>
                     </div>
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg col-span-2 flex justify-between items-center">
@@ -238,6 +244,14 @@
 
         <!-- VIEWPORT ORGANOGRAM (CENTER/RIGHT) -->
         <main class="flex-1 overflow-auto p-8 flex justify-center items-start bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-stefaniniMidnight/30 via-stefaniniDark to-stefaniniDark relative" id="tree-viewport">
+            <!-- Title for Presentation Mode -->
+            <div id="presentation-header" class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 z-40 px-8 py-3 bg-stefaniniMidnight/90 backdrop-blur-md border border-slate-800/80 rounded-full shadow-neonMagenta flex items-center gap-2 pointer-events-none transition-all duration-300">
+                <h2 class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
+                    STEFANINI <span class="text-stefaniniMagenta">GROUP</span> 
+                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-stefaniniCyan/10 text-stefaniniCyan border border-stefaniniCyan/30 font-semibold uppercase tracking-wider">TRT1 RJ</span>
+                </h2>
+            </div>
+            
             <div class="zoom-container py-12" id="zoom-container">
                 <div class="org-tree" id="org-tree-root">
                     <!-- Tree will be rendered dynamically by JavaScript -->
@@ -314,9 +328,9 @@
                         <input type="text" id="edit-role" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniCyan rounded-lg text-white text-sm outline-none transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Região de Alocação</label>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Localidade de Alocação</label>
                         <select id="edit-forum" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniCyan rounded-lg text-white text-sm outline-none transition">
-                            <option value="rj">Rio de Janeiro</option>
+                            <option value="rio">Rio de Janeiro</option>
                         </select>
                     </div>
                 </div>
@@ -343,39 +357,50 @@
         let activeFilter = 'all';
         let activeEditId = null;
 
-        // Default Team Data conforming exactly to client uploads
+        // Default Team Data conforming exactly to client uploads (All 15 analysts and Michele in Rio de Janeiro)
         let teamData = {
             supervisora: {
                 id: 'N2',
                 name: 'Michele Vieira Avila',
                 role: 'Supervisora de Suporte',
                 location: 'Rio de Janeiro',
-                forumId: 'rj',
-                avatar: 'fotos/Michele Vieira Avila - Supervisor Suporte.png',
+                forumId: 'rio',
+                avatar: 'assets/imagens/Michele Vieira Avila/Michele Vieira Avila - Supervisor Suporte.png',
                 type: 'supervisao'
             },
             analistas: [
-                { id: 'A1', name: 'Amaro Costa da Nóbrega', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Amaro Costa da Nobrega - Analkista de Suporte Jr.jpg' },
-                { id: 'A2', name: 'Anderson Martins Souza', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Anderson Martins Souza - Analkista de Suporte Jr.png' },
-                { id: 'A3', name: 'Daniele de Jesus Silva Lima', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Daniele de Jesus Silva Lima - Analkista de Suporte Jr.jpg' },
-                { id: 'A4', name: 'Diego Vieira Tranhaque', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Diego Vieira Tranhaque - Analkista de Suporte Jr.jpg' },
-                { id: 'A5', name: 'Ismael dos Santos da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Ismael dos Santos da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A6', name: 'Itaiguara de Souza Lima', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Itaiguara de Souza Lima - Analkista de Suporte Jr.jpg' },
-                { id: 'A7', name: 'Jessica Luiz da Silva Oliveira', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Jessica Luiz da Silva Oliveira  - Analkista de Suporte Jr.png' },
-                { id: 'A8', name: 'Lucas Marques Ximenes', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Lucas Marques Ximenes - Analkista de Suporte Jr.png' },
-                { id: 'A9', name: 'Luiz Felipe Lamas da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Luiz Felipe Lamas da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A10', name: 'Luiz Gustavo Marques da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Luiz Gustavo Marques da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A11', name: 'Rosemere Pinheiro da Silva', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' },
-                { id: 'A12', name: 'Vicente Luis de Souza', role: 'Analista de Suporte Jr - ServiceDesk N1', forumId: 'rj', location: 'Rio de Janeiro', avatar: 'fotos/Vicente Luis de Souza - Analkista de Suporte Jr.png' }
+                { id: 'A1', name: 'Amaro Costa da Nóbrega', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Amaro Costa da Nobrega/Amaro Costa da Nobrega - Analista de Suporte Jr.jpg' },
+                { id: 'A2', name: 'Anderson Martins Souza', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Anaderson Martins Souza/Anderson Martins Souza - Analkista de Suporte Jr.png' },
+                { id: 'A3', name: 'Daniele de Jesus Silva Lima', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Daniela de Jesus/Daniele de Jesus Silva Lima - Analkista de Suporte Jr.jpg' },
+                { id: 'A4', name: 'Diego Vieira Tranhaque', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Diego Vieira Tranhaque/Diego Vieira Tranhaque - Analkista de Suporte Jr.jpg' },
+                { id: 'A5', name: 'Ismael dos Santos da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Ismael dos Santos da Silva/Ismael dos Santos da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A6', name: 'Itaiguara de Souza Lima', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Itaiguara de Souza Lima/Itaiguara de Souza Lima - Analkista de Suporte Jr.jpg' },
+                { id: 'A7', name: 'Jessica Luiz da Silva Oliveira', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Jessica Luiza da Silva Oliveira/Jessica Luiza da Silva Oliveira  - Analkista de Suporte Jr.png' },
+                { id: 'A8', name: 'Lucas Marques Ximenes', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Lucas Marques Ximenes/Lucas Marques Ximenes - Analkista de Suporte Jr.png' },
+                { id: 'A9', name: 'Luiz Felipe Lamas da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Felipe Lamas da Silva/Luiz Felipe Lamas da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A10', name: 'Luiz Gustavo Marques da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Gustavo Marques da Silva/Luiz Gustavo Marques da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A11', name: 'Renato Francisco da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Renato Francisco da Silva/Renato Francisco da Silva - Analkista de Suporte Jr.png' },
+                { id: 'A12', name: 'Rosemere Pinheiro da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Rosemere Pinheiro da Silva/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' },
+                { id: 'A13', name: 'Vanessa Oliveira', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vanessa Oliveira/Vanessa Oliveira - Analkista de Suporte Jr.jpg' },
+                { id: 'A14', name: 'Vicente Luis de Souza', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vicente Luis de Souza/Vicente Luis de Souza - Analkista de Suporte Jr.png' },
+                { id: 'A15', name: 'Vinicius dos Santos Estrella', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vinicius dos Santos Estrella/Vinicius dos Santos Estrella - Analkista de Suporte Jr.jpg' }
             ]
         };
 
-        // Load persisted data if exists
-        if(localStorage.getItem('stefanini_trt1_org_v7')) {
+        // Load persisted data if exists and migrate it
+        if(localStorage.getItem('stefanini_trt1_org_v2')) {
             try {
-                teamData = JSON.parse(localStorage.getItem('stefanini_trt1_org_v7'));
+                let loadedData = JSON.parse(localStorage.getItem('stefanini_trt1_org_v2'));
+                // Migrate if the teamData structure is old or incomplete
+                if (loadedData.coordenadora || !loadedData.analistas || loadedData.analistas.length < 15) {
+                    console.log("Migrating/Resetting legacy organogram data for 15 analysts in Rio de Janeiro...");
+                    // Override with new default teamData
+                    localStorage.setItem('stefanini_trt1_org_v2', JSON.stringify(teamData));
+                } else {
+                    teamData = loadedData;
+                }
             } catch(e) {
-                console.warn("Could not load stored organogram data, falling back to defaults.");
+                console.warn("Could not load stored organogram data, falling back to defaults.", e);
             }
         }
 
@@ -394,7 +419,7 @@
             const makeCardHTML = (member, accentColor = 'stefaniniMagenta') => {
                 const initials = member.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
                 const avatarStyle = member.avatar ? `background-image: url('${member.avatar}'); background-size: cover; background-position: center; border-style: solid;` : '';
-                const isDimmed = false;
+                const isDimmed = activeFilter !== 'all' && member.forumId !== activeFilter && member.type !== 'supervisao';
                 
                 // Check customized borders
                 let borderColor = 'border-stefaniniMagenta/30 hover:border-stefaniniMagenta';
@@ -423,7 +448,7 @@
                         <!-- Footer tags -->
                         <div class="border-t border-slate-800/80 pt-2 flex items-center justify-between">
                             <span class="text-[9px] px-2 py-0.5 rounded-full border ${tagColor} truncate max-w-[130px]">
-                                Rio de Janeiro
+                                ${member.location || 'Rio de Janeiro'}
                             </span>
                             <span class="text-[9px] text-emerald-400 flex items-center gap-1">
                                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Ativo
@@ -437,18 +462,45 @@
                 `;
             };
 
-            // HTML structural composition for the tree
+            // HTML structural composition for the tree (Michele as head, Stefanini banner above her head, analysts in 3 columns)
+            const size = teamData.analistas.length;
+            const colSize = Math.ceil(size / 3);
+            const col1 = teamData.analistas.slice(0, colSize);
+            const col2 = teamData.analistas.slice(colSize, colSize * 2);
+            const col3 = teamData.analistas.slice(colSize * 2);
+
             let html = `
                 <ul>
-                    <li>
-                        ${makeCardHTML(teamData.supervisora, 'stefaniniMagenta')}
+                    <li class="flex flex-col items-center">
+                        <!-- Banner Superior -->
+                        <div class="inline-flex flex-col items-center mb-6">
+                            <div class="px-8 py-3 bg-gradient-to-r from-stefaniniMidnight via-stefaniniCard to-stefaniniMidnight border border-stefaniniCyan/40 rounded-full shadow-neonCyan text-sm font-extrabold text-white tracking-widest uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-sitemap text-stefaniniCyan"></i> Stefanini Group TRT1 RJ
+                            </div>
+                            <div class="h-8 w-0.5 bg-stefaniniMagenta"></div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            ${makeCardHTML(teamData.supervisora, 'stefaniniMagenta')}
+                        </div>
+                        
                         <ul class="level-operational level-operational-parent">
+                            <!-- Coluna 1 -->
                             <li>
-                                <div class="inline-block px-4 py-2 bg-stefaniniDark border border-stefaniniCyan/20 rounded-xl mb-4 text-xs font-bold text-stefaniniCyan flex items-center gap-2">
-                                    <span class="h-2 w-2 rounded-full bg-stefaniniCyan"></span> Rio de Janeiro
+                                <div class="flex flex-col gap-3 items-center">
+                                    ${col1.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
                                 </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
-                                    ${teamData.analistas.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
+                            </li>
+                            <!-- Coluna 2 -->
+                            <li>
+                                <div class="flex flex-col gap-3 items-center">
+                                    ${col2.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
+                                </div>
+                            </li>
+                            <!-- Coluna 3 -->
+                            <li>
+                                <div class="flex flex-col gap-3 items-center">
+                                    ${col3.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
                                 </div>
                             </li>
                         </ul>
@@ -479,7 +531,8 @@
         function updateStatsAndCounts() {
             const total = 1 + teamData.analistas.length;
             document.getElementById('stat-total').innerText = total;
-            document.getElementById('count-all').innerText = total;
+            const countAllEl = document.getElementById('count-all');
+            if (countAllEl) countAllEl.innerText = total;
         }
 
         // Edit Modal Management
@@ -571,7 +624,7 @@
             delete preview.dataset.tempAvatar;
 
             // Save to LocalStorage for persistence
-            localStorage.setItem('stefanini_trt1_org_v7', JSON.stringify(teamData));
+            localStorage.setItem('stefanini_trt1_org_v2', JSON.stringify(teamData));
 
             // Refresh DOM Elements
             renderOrganogram();
@@ -587,20 +640,23 @@
             
             let code = `graph TD
     %% Nós Principais
-    N2[<b>${teamData.supervisora.name}</b> <br> ${teamData.supervisora.role}] --> RJ
- 
-    %% Sub-estrutura Rio de Janeiro
-    subgraph RJ [Rio de Janeiro]
+    N1[Stefanini Group TRT1 RJ] --> N2[<b>${teamData.supervisora.name}</b> <br> ${teamData.supervisora.role}]
+    N2 --> F1
+
+    %% Sub-estruturas por Prédios/Fóruns
+    subgraph F1 [Rio de Janeiro]
         ${teamData.analistas.map(a => `${a.id}[${a.name}]`).join('\n        ')}
     end
- 
+
     %% Estilização (Customização Identidade Visual Stefanini)
     classDef default fill:#050b14,stroke:#06b6d4,stroke-width:2px,color:#ffffff;
     classDef supervisao fill:#ec4899,stroke:#ffffff,stroke-width:2px,color:#050b14,font-weight:bold;
     classDef predio fill:#0b192c,stroke:#06b6d4,stroke-width:1px,color:#06b6d4;
- 
+    classDef banner fill:#050b14,stroke:#ec4899,stroke-width:3px,color:#ffffff,font-weight:bold;
+
+    class N1 banner;
     class N2 supervisao;
-    class RJ predio;
+    class F1 predio;
     
     %% Configuração de Links (Conexões)
     linkStyle default stroke:#ec4899,stroke-width:2px;`;
@@ -664,10 +720,12 @@
             const header = document.querySelector('header');
             const btnPresText = document.querySelector('#btn-presentation span');
             const btnPresIcon = document.querySelector('#btn-presentation i');
+            const presHeader = document.getElementById('presentation-header');
 
             if (isPresentation) {
                 sidebar.classList.add('hidden');
                 header.classList.add('hidden');
+                presHeader.classList.remove('hidden');
                 btnPresText.innerText = "Restaurar Visão";
                 btnPresIcon.className = "fa-solid fa-compress";
                 // Append a tiny floating restorer button in presentation mode
@@ -681,11 +739,440 @@
             } else {
                 sidebar.classList.remove('hidden');
                 header.classList.remove('hidden');
+                presHeader.classList.add('hidden');
                 btnPresText.innerText = "Apresentação";
                 btnPresIcon.className = "fa-solid fa-expand";
                 const floatBtn = document.getElementById('restorer-float-btn');
                 if (floatBtn) floatBtn.remove();
                 document.getElementById('tree-viewport').classList.remove('p-0');
+            }
+        }
+
+        // PPTX Generator
+        function exportToPowerPoint() {
+            showToast("Gerando apresentação PowerPoint...");
+
+            try {
+                // Initialize PptxGenJS
+                let pptx = new PptxGenJS();
+                pptx.layout = 'LAYOUT_16X9';
+
+                // Helpers for color constants
+                const BG_COLOR = "050B14";       // Dark stefanini background
+                const MIDNIGHT_COLOR = "0B1329"; // Midnight card background
+                const MAGENTA_COLOR = "EC4899";  // Magenta accent
+                const CYAN_COLOR = "06B6D4";     // Cyan accent
+                const WHITE_COLOR = "FFFFFF";    // White
+                const SLATE_COLOR = "94A3B8";    // Slate text
+                const EMERALD_COLOR = "34D399";  // Emerald green
+
+                // Safely resolve ShapeTypes across different versions
+                const rectShape = pptx.ShapeType ? pptx.ShapeType.rect : (pptx.shapes ? pptx.shapes.RECTANGLE : 'rect');
+                const roundedRectShape = pptx.ShapeType ? pptx.ShapeType.roundRect : (pptx.shapes ? pptx.shapes.ROUNDED_RECTANGLE : 'roundRect');
+                const lineShape = pptx.ShapeType ? pptx.ShapeType.line : (pptx.shapes ? pptx.shapes.LINE : 'line');
+
+                // Helper to add standard header and footer to a content slide
+                function applySlideTemplate(slide, titleText) {
+                    // Slide background
+                    slide.background = { color: BG_COLOR };
+
+                    // Header title
+                    slide.addText(titleText, {
+                        x: 0.6,
+                        y: 0.4,
+                        w: 8.8,
+                        h: 0.4,
+                        fontSize: 20,
+                        bold: true,
+                        color: CYAN_COLOR,
+                        fontFace: "Arial"
+                    });
+
+                    // Top divider line (magenta)
+                    slide.addShape(rectShape, {
+                        x: 0.6,
+                        y: 0.9,
+                        w: 8.8,
+                        h: 0.03,
+                        fill: { color: MAGENTA_COLOR },
+                        line: { color: MAGENTA_COLOR, width: 0 }
+                    });
+
+                    // Footer text
+                    slide.addText("STEFANINI GROUP  |  TRT1 RJ  |  Estrutura de Suporte Técnico & Gestão Operacional", {
+                        x: 0.6,
+                        y: 5.25,
+                        w: 8.8,
+                        h: 0.3,
+                        fontSize: 9,
+                        color: SLATE_COLOR,
+                        fontFace: "Arial",
+                        align: "left"
+                    });
+                }
+
+                // Helper to add a member card on a slide
+                function addMemberCard(slide, member, x, y, w, h, borderColor) {
+                    // Card background shape
+                    slide.addShape(roundedRectShape, {
+                        x: x,
+                        y: y,
+                        w: w,
+                        h: h,
+                        fill: { color: MIDNIGHT_COLOR },
+                        line: { color: borderColor, width: 2 }
+                    });
+
+                    // Avatar photo placeholder or image
+                    const avatarW = w * 0.6; // Scale avatar size based on card size
+                    const avatarH = avatarW;
+                    const avatarX = x + (w - avatarW) / 2;
+                    const avatarY = y + 0.3;
+
+                    if (member.avatar) {
+                        try {
+                            const imgConfig = {
+                                x: avatarX,
+                                y: avatarY,
+                                w: avatarW,
+                                h: avatarH
+                            };
+                            if (member.avatar.startsWith('data:')) {
+                                imgConfig.data = member.avatar;
+                            } else {
+                                imgConfig.path = member.avatar;
+                            }
+                            slide.addImage(imgConfig);
+                        } catch (err) {
+                            console.error("Erro ao adicionar imagem no PPTX:", err);
+                            drawAvatarPlaceholder(slide, member, avatarX, avatarY, avatarW, avatarH);
+                        }
+                    } else {
+                        drawAvatarPlaceholder(slide, member, avatarX, avatarY, avatarW, avatarH);
+                    }
+
+                    // Member Name
+                    slide.addText(member.name, {
+                        x: x + 0.1,
+                        y: avatarY + avatarH + 0.15,
+                        w: w - 0.2,
+                        h: 0.4,
+                        fontSize: w > 2.2 ? 12 : 10,
+                        bold: true,
+                        color: WHITE_COLOR,
+                        align: "center",
+                        valign: "middle",
+                        fontFace: "Arial"
+                    });
+
+                    // Member Role
+                    slide.addText(member.role, {
+                        x: x + 0.1,
+                        y: avatarY + avatarH + 0.55,
+                        w: w - 0.2,
+                        h: 0.3,
+                        fontSize: w > 2.2 ? 10 : 8,
+                        color: SLATE_COLOR,
+                        align: "center",
+                        valign: "top",
+                        fontFace: "Arial"
+                    });
+
+                    // Status Badge (Ativo)
+                    const statusY = y + h - 0.45;
+                    slide.addText("● Ativo", {
+                        x: x + 0.1,
+                        y: statusY,
+                        w: w - 0.2,
+                        h: 0.25,
+                        fontSize: 9,
+                        bold: true,
+                        color: EMERALD_COLOR,
+                        align: "center",
+                        valign: "middle",
+                        fontFace: "Arial"
+                    });
+                }
+
+                function drawAvatarPlaceholder(slide, member, x, y, w, h) {
+                    slide.addShape(rectShape, {
+                        x: x,
+                        y: y,
+                        w: w,
+                        h: h,
+                        fill: { color: "1E293B" },
+                        line: { color: "334155", width: 1 }
+                    });
+
+                    const initials = member.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                    slide.addText(initials, {
+                        x: x,
+                        y: y,
+                        w: w,
+                        h: h,
+                        fontSize: 16,
+                        bold: true,
+                        color: SLATE_COLOR,
+                        align: "center",
+                        valign: "middle",
+                        fontFace: "Arial"
+                    });
+                }
+
+                // ==========================================
+                // SLIDE 1: Capa (Cover)
+                // ==========================================
+                let slide1 = pptx.addSlide();
+                slide1.background = { color: BG_COLOR };
+
+                // Large decorative neon outline box in the center
+                slide1.addShape(roundedRectShape, {
+                    x: 1.0,
+                    y: 0.8,
+                    w: 8.0,
+                    h: 4.0,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: MAGENTA_COLOR, width: 3 }
+                });
+
+                // Top visual line indicator inside the box
+                slide1.addShape(rectShape, {
+                    x: 2.5,
+                    y: 1.2,
+                    w: 5.0,
+                    h: 0.05,
+                    fill: { color: CYAN_COLOR },
+                    line: { color: CYAN_COLOR, width: 0 }
+                });
+
+                // Main Title
+                slide1.addText([
+                    { text: "STEFANINI ", options: { bold: true, fontSize: 34, color: WHITE_COLOR } },
+                    { text: "GROUP", options: { bold: true, fontSize: 34, color: MAGENTA_COLOR } }
+                ], {
+                    x: 1.5,
+                    y: 1.5,
+                    w: 7.0,
+                    h: 0.8,
+                    align: "center",
+                    valign: "middle",
+                    fontFace: "Arial"
+                });
+
+                // Subtitle
+                slide1.addText("TRT1 RJ  |  ORGANOGRAMA OPERACIONAL", {
+                    x: 1.5,
+                    y: 2.4,
+                    w: 7.0,
+                    h: 0.4,
+                    fontSize: 18,
+                    bold: true,
+                    color: CYAN_COLOR,
+                    align: "center",
+                    valign: "middle",
+                    fontFace: "Arial"
+                });
+
+                // Description
+                slide1.addText("Estrutura de Suporte Técnico & Gestão Operacional", {
+                    x: 1.5,
+                    y: 2.9,
+                    w: 7.0,
+                    h: 0.4,
+                    fontSize: 13,
+                    color: SLATE_COLOR,
+                    align: "center",
+                    valign: "middle",
+                    fontFace: "Arial"
+                });
+
+                // Footer version & date
+                const today = new Date().toLocaleDateString('pt-BR');
+                slide1.addText(`Gerado automaticamente em ${today}\nVersão Interativa`, {
+                    x: 1.5,
+                    y: 3.7,
+                    w: 7.0,
+                    h: 0.6,
+                    fontSize: 10,
+                    color: SLATE_COLOR,
+                    align: "center",
+                    valign: "top",
+                    fontFace: "Arial"
+                });
+
+                // ==========================================
+                // SLIDE 2: Liderança e Gestão (Management)
+                // ==========================================
+                let slide2 = pptx.addSlide();
+                applySlideTemplate(slide2, "Liderança e Gestão Operacional");
+
+                // Supervisora Column/Card
+                slide2.addShape(roundedRectShape, {
+                    x: 2.8,
+                    y: 1.3,
+                    w: 4.4,
+                    h: 3.6,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: MAGENTA_COLOR, width: 2 }
+                });
+
+                const superv = teamData.supervisora;
+                const supervInitials = superv.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                
+                if (superv.avatar) {
+                    try {
+                        const imgConfig = { x: 4.3, y: 1.5, w: 1.4, h: 1.4 };
+                        if (superv.avatar.startsWith('data:')) {
+                            imgConfig.data = superv.avatar;
+                        } else {
+                            imgConfig.path = superv.avatar;
+                        }
+                        slide2.addImage(imgConfig);
+                    } catch (err) {
+                        slide2.addShape(rectShape, { x: 4.3, y: 1.5, w: 1.4, h: 1.4, fill: { color: "1E293B" }, line: { color: "334155", width: 1 } });
+                        slide2.addText(supervInitials, { x: 4.3, y: 1.5, w: 1.4, h: 1.4, fontSize: 24, bold: true, color: SLATE_COLOR, align: "center", valign: "middle", fontFace: "Arial" });
+                    }
+                } else {
+                    slide2.addShape(rectShape, { x: 4.3, y: 1.5, w: 1.4, h: 1.4, fill: { color: "1E293B" }, line: { color: "334155", width: 1 } });
+                    slide2.addText(supervInitials, { x: 4.3, y: 1.5, w: 1.4, h: 1.4, fontSize: 24, bold: true, color: SLATE_COLOR, align: "center", valign: "middle", fontFace: "Arial" });
+                }
+
+                slide2.addText(superv.name, { x: 2.9, y: 3.0, w: 4.2, h: 0.35, fontSize: 16, bold: true, color: WHITE_COLOR, align: "center", fontFace: "Arial" });
+                slide2.addText(superv.role, { x: 2.9, y: 3.35, w: 4.2, h: 0.3, fontSize: 11, bold: true, color: MAGENTA_COLOR, align: "center", fontFace: "Arial" });
+                slide2.addText(`Alocação: ${superv.location}`, { x: 2.9, y: 3.65, w: 4.2, h: 0.3, fontSize: 9, color: SLATE_COLOR, align: "center", fontFace: "Arial" });
+
+                slide2.addText("• Supervisão técnica e operacional das equipes de campo\n• Monitoramento diário de filas de chamados e pendências\n• Report técnico de incidentes críticos e escalonamentos", {
+                    x: 3.0, y: 4.0, w: 4.0, h: 0.8, fontSize: 9.5, color: WHITE_COLOR, fontFace: "Arial"
+                });
+
+                // ==========================================
+                // SLIDE 3: Organograma Geral (Diagram)
+                // ==========================================
+                let slide3 = pptx.addSlide();
+                applySlideTemplate(slide3, "Estrutura Organizacional TRT1 RJ");
+
+                // Superv Box
+                slide3.addShape(roundedRectShape, {
+                    x: 3.75, y: 1.1, w: 2.5, h: 0.7,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: MAGENTA_COLOR, width: 2 }
+                });
+                slide3.addText(`${superv.name}\nSupervisora de Suporte`, {
+                    x: 3.8, y: 1.15, w: 2.4, h: 0.6,
+                    fontSize: 9, bold: true, color: WHITE_COLOR, align: "center", valign: "middle", fontFace: "Arial"
+                });
+
+                // Line Michele -> Main Group Box
+                slide3.addShape(lineShape, {
+                    x: 5.0, y: 1.8, w: 0, h: 0.8,
+                    line: { color: MAGENTA_COLOR, width: 2 }
+                });
+
+                // Rio de Janeiro Box
+                slide3.addShape(roundedRectShape, {
+                    x: 1.5, y: 2.6, w: 7.0, h: 2.4,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: CYAN_COLOR, width: 2 }
+                });
+                
+                // Title and team summary inside the box
+                slide3.addText("Equipe Operacional - Rio de Janeiro (15 Analistas)", {
+                    x: 1.7, y: 2.7, w: 6.6, h: 0.3,
+                    fontSize: 11, bold: true, color: CYAN_COLOR, fontFace: "Arial"
+                });
+
+                // List the 15 analysts in three columns inside the box
+                const cols = [[], [], []];
+                teamData.analistas.forEach((a, i) => {
+                    cols[i % 3].push(`• ${a.name.split(' ').slice(0,2).join(' ')}`);
+                });
+
+                slide3.addText(cols[0].join('\n'), { x: 1.7, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[1].join('\n'), { x: 3.9, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[2].join('\n'), { x: 6.1, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+
+                // ==========================================
+                // SLIDE 4: Equipe Rio de Janeiro - Parte 1
+                // ==========================================
+                let slide4 = pptx.addSlide();
+                applySlideTemplate(slide4, "Equipe Operacional - Rio de Janeiro (1/3)");
+                const teamPart1 = teamData.analistas.slice(0, 5);
+                teamPart1.forEach((analyst, index) => {
+                    const cardX = 0.6 + (index * 1.8);
+                    addMemberCard(slide4, analyst, cardX, 1.3, 1.5, 3.6, CYAN_COLOR);
+                });
+
+                // ==========================================
+                // SLIDE 5: Equipe Rio de Janeiro - Parte 2
+                // ==========================================
+                let slide5 = pptx.addSlide();
+                applySlideTemplate(slide5, "Equipe Operacional - Rio de Janeiro (2/3)");
+                const teamPart2 = teamData.analistas.slice(5, 10);
+                teamPart2.forEach((analyst, index) => {
+                    const cardX = 0.6 + (index * 1.8);
+                    addMemberCard(slide5, analyst, cardX, 1.3, 1.5, 3.6, CYAN_COLOR);
+                });
+
+                // ==========================================
+                // SLIDE 6: Equipe Rio de Janeiro - Parte 3
+                // ==========================================
+                let slide6 = pptx.addSlide();
+                applySlideTemplate(slide6, "Equipe Operacional - Rio de Janeiro (3/3)");
+                const teamPart3 = teamData.analistas.slice(10, 15);
+                teamPart3.forEach((analyst, index) => {
+                    const cardX = 0.6 + (index * 1.8);
+                    addMemberCard(slide6, analyst, cardX, 1.3, 1.5, 3.6, CYAN_COLOR);
+                });
+
+                // ==========================================
+                // SLIDE 7: Visão Geral e Indicadores
+                // ==========================================
+                let slide7 = pptx.addSlide();
+                applySlideTemplate(slide7, "Metas Operacionais e Resumo");
+
+                // Left Column Card
+                slide7.addShape(roundedRectShape, {
+                    x: 0.8, y: 1.4, w: 4.0, h: 3.4,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: CYAN_COLOR, width: 2 }
+                });
+                slide7.addText("Estrutura do Contrato", { x: 1.0, y: 1.6, w: 3.6, h: 0.35, fontSize: 14, bold: true, color: CYAN_COLOR, fontFace: "Arial" });
+                slide7.addText(
+                    "• Total de Integrantes: 16 profissionais dedicados\n" +
+                    "• Distribuição Física: Operação concentrada no Rio de Janeiro\n" +
+                    "• Nível de Atendimento: Suporte N2 Local (Hardware, Software e Sistemas Judiciais)\n" +
+                    "• Operação: 100% ativa, em conformidade com as diretrizes do TRT1",
+                    { x: 1.0, y: 2.05, w: 3.6, h: 2.5, fontSize: 10.5, color: WHITE_COLOR, lineSpacing: 1.3, fontFace: "Arial" }
+                );
+
+                // Right Column Card
+                slide7.addShape(roundedRectShape, {
+                    x: 5.2, y: 1.4, w: 4.0, h: 3.4,
+                    fill: { color: MIDNIGHT_COLOR },
+                    line: { color: MAGENTA_COLOR, width: 2 }
+                });
+                slide7.addText("Foco Operacional e SLAs", { x: 5.4, y: 1.6, w: 3.6, h: 0.35, fontSize: 14, bold: true, color: MAGENTA_COLOR, fontFace: "Arial" });
+                slide7.addText(
+                    "• Cumprimento rigoroso de tempos de atendimento e solução (SLAs)\n" +
+                    "• Soluções ágeis com foco em continuidade judiciária\n" +
+                    "• Manutenção preventiva regular das estações de trabalho\n" +
+                    "• Alta qualidade atestada pelas pesquisas de satisfação dos Fóruns",
+                    { x: 5.4, y: 2.05, w: 3.6, h: 2.5, fontSize: 10.5, color: WHITE_COLOR, lineSpacing: 1.3, fontFace: "Arial" }
+                );
+
+                // Export File
+                pptx.writeFile({ fileName: `Organograma_Stefanini_TRT1_RJ.pptx` })
+                    .then(() => {
+                        showToast("Apresentação PowerPoint baixada!");
+                    })
+                    .catch(err => {
+                        console.error("Erro ao salvar PPTX:", err);
+                        showToast("Erro ao exportar PowerPoint.");
+                    });
+
+            } catch (error) {
+                console.error("Erro na geração do PowerPoint:", error);
+                showToast("Erro crítico na geração do PPTX.");
             }
         }
     </script>
