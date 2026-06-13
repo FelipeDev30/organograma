@@ -21,15 +21,15 @@
                         stefaniniDark: '#050b14',
                         stefaniniMidnight: '#0b1329',
                         stefaniniCard: '#111a36',
-                        stefaniniMagenta: '#ec4899',
-                        stefaniniCyan: '#06b6d4',
+                        stefaniniBlue: '#005ebb',
+                        stefaniniGreen: '#00bfa5',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
                     boxShadow: {
-                        neonMagenta: '0 0 15px rgba(236, 72, 153, 0.4)',
-                        neonCyan: '0 0 15px rgba(6, 182, 212, 0.4)',
+                        neonBlue: '0 0 15px rgba(0, 94, 187, 0.4)',
+                        neonGreen: '0 0 15px rgba(0, 191, 165, 0.4)',
                         cardGlow: '0 4px 20px rgba(5, 11, 20, 0.8)',
                     }
                 }
@@ -55,7 +55,7 @@
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #ec4899;
+            background: #005ebb;
         }
         
         /* Hierarchy connection lines styling */
@@ -80,14 +80,14 @@
             position: absolute; 
             top: 0; 
             right: 50%;
-            border-top: 2px solid #ec4899;
+            border-top: 2px solid #005ebb;
             width: 50%; 
             height: 20px;
         }
         .org-tree li::after {
             right: auto; 
             left: 50%;
-            border-left: 2px solid #ec4899;
+            border-left: 2px solid #005ebb;
         }
         .org-tree li:only-child::after, .org-tree li:only-child::before {
             display: none;
@@ -99,7 +99,7 @@
             border: 0 none;
         }
         .org-tree li:last-child::before {
-            border-right: 2px solid #ec4899;
+            border-right: 2px solid #005ebb;
             border-radius: 0 5px 0 0;
         }
         .org-tree li:first-child::after {
@@ -110,23 +110,23 @@
             position: absolute; 
             top: 0; 
             left: 50%;
-            border-left: 2px solid #ec4899;
+            border-left: 2px solid #005ebb;
             width: 0; 
             height: 20px;
         }
         
-        /* Cyan connector variants for operational levels */
+        /* Green connector variants for operational levels */
         .level-operational > li::before, .level-operational > li::after {
-            border-top-color: #06b6d4 !important;
+            border-top-color: #00bfa5 !important;
         }
         .level-operational > li::after {
-            border-left-color: #06b6d4 !important;
+            border-left-color: #00bfa5 !important;
         }
         .level-operational > li:last-child::before {
-            border-right-color: #06b6d4 !important;
+            border-right-color: #00bfa5 !important;
         }
         .level-operational-parent::before {
-            border-left-color: #06b6d4 !important;
+            border-left-color: #00bfa5 !important;
         }
 
         /* Card highlight transition */
@@ -150,13 +150,13 @@
     <header class="border-b border-slate-800 bg-stefaniniMidnight/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-4">
-                <div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-stefaniniMagenta to-stefaniniCyan flex items-center justify-center shadow-neonMagenta">
+                <div class="h-10 w-10 rounded-lg bg-gradient-to-tr from-stefaniniBlue to-stefaniniGreen flex items-center justify-center shadow-neonBlue">
                     <i class="fa-solid fa-sitemap text-white text-lg"></i>
                 </div>
                 <div>
                     <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
-                        STEFANINI <span class="text-stefaniniMagenta">GROUP</span> 
-                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-stefaniniCyan/10 text-stefaniniCyan border border-stefaniniCyan/30 font-semibold uppercase tracking-wider">TRT1 RJ</span>
+                        STEFANINI <span class="text-stefaniniBlue">GROUP</span> 
+                        <span class="text-xs px-2.5 py-0.5 rounded-full bg-stefaniniGreen/10 text-stefaniniGreen border border-stefaniniGreen/30 font-semibold uppercase tracking-wider">TRT1 RJ</span>
                     </h1>
                     <p class="text-xs text-slate-400">Estrutura de Suporte Técnico & Gestão Operacional</p>
                 </div>
@@ -176,11 +176,11 @@
                     </button>
                 </div>
 
-                <button onclick="togglePresentationMode()" class="px-4 py-2 bg-stefaniniMidnight hover:bg-stefaniniCard border border-stefaniniMagenta/30 hover:border-stefaniniMagenta text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-sm hover:shadow-neonMagenta" id="btn-presentation">
+                <button onclick="togglePresentationMode()" class="px-4 py-2 bg-stefaniniMidnight hover:bg-stefaniniCard border border-stefaniniBlue/30 hover:border-stefaniniBlue text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-sm hover:shadow-neonBlue" id="btn-presentation">
                     <i class="fa-solid fa-expand"></i> <span>Apresentação</span>
                 </button>
                 
-                <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-stefaniniMagenta to-pink-600 hover:opacity-90 text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-md">
+                <button onclick="toggleSidebar()" class="px-4 py-2 bg-gradient-to-r from-stefaniniBlue to-pink-600 hover:opacity-90 text-white text-sm font-semibold rounded-lg flex items-center gap-2 transition shadow-md">
                     <i class="fa-solid fa-code"></i> <span>Ver Mermaid.js</span>
                 </button>
                 
@@ -198,13 +198,13 @@
         <aside class="w-80 border-r border-slate-800 bg-stefaniniMidnight/70 p-6 flex flex-col gap-6 overflow-y-auto hidden md:flex" id="control-sidebar">
             <!-- Location Section -->
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-stefaniniCyan mb-3">Localidade da Equipe</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-stefaniniGreen mb-3">Localidade da Equipe</h3>
                 <div class="flex flex-col gap-2">
-                    <div class="w-full px-4 py-2.5 text-left text-sm rounded-lg border border-stefaniniCyan bg-stefaniniDark/50 text-white flex items-center justify-between">
+                    <div class="w-full px-4 py-2.5 text-left text-sm rounded-lg border border-stefaniniGreen bg-stefaniniDark/50 text-white flex items-center justify-between">
                         <span class="flex items-center gap-2">
-                            <span class="h-2.5 w-2.5 rounded-full bg-stefaniniCyan"></span> Rio de Janeiro
+                            <span class="h-2.5 w-2.5 rounded-full bg-stefaniniGreen"></span> Rio de Janeiro
                         </span>
-                        <span class="text-xs bg-stefaniniCyan/10 text-stefaniniCyan px-2 py-0.5 rounded-md" id="count-all">16</span>
+                        <span class="text-xs bg-stefaniniGreen/10 text-stefaniniGreen px-2 py-0.5 rounded-md" id="count-all">16</span>
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
             <!-- Photos Instructions Card -->
             <div class="p-4 rounded-xl bg-stefaniniCard border border-slate-800 shadow-cardGlow">
                 <h4 class="text-xs font-semibold text-white mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-camera text-stefaniniMagenta"></i> Inserir Fotos Reais
+                    <i class="fa-solid fa-camera text-stefaniniBlue"></i> Inserir Fotos Reais
                 </h4>
                 <p class="text-xs text-slate-400 leading-relaxed">
                     Você pode personalizar este organograma com os rostos reais da sua equipe! Clique em qualquer card de colaborador para fazer upload de uma foto.
@@ -228,7 +228,7 @@
                         <span class="block text-[10px] uppercase text-slate-400">Integrantes</span>
                     </div>
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg">
-                        <span class="text-2xl font-bold text-stefaniniCyan">N2/N3</span>
+                        <span class="text-2xl font-bold text-stefaniniGreen">N2/N3</span>
                         <span class="block text-[10px] uppercase text-slate-400">Nível Técnico</span>
                     </div>
                     <div class="p-3 bg-stefaniniDark/60 border border-slate-800 rounded-lg col-span-2 flex justify-between items-center">
@@ -245,10 +245,10 @@
         <!-- VIEWPORT ORGANOGRAM (CENTER/RIGHT) -->
         <main class="flex-1 overflow-auto p-8 flex justify-center items-start bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-stefaniniMidnight/30 via-stefaniniDark to-stefaniniDark relative" id="tree-viewport">
             <!-- Title for Presentation Mode -->
-            <div id="presentation-header" class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 z-40 px-8 py-3 bg-stefaniniMidnight/90 backdrop-blur-md border border-slate-800/80 rounded-full shadow-neonMagenta flex items-center gap-2 pointer-events-none transition-all duration-300">
+            <div id="presentation-header" class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 z-40 px-8 py-3 bg-stefaniniMidnight/90 backdrop-blur-md border border-slate-800/80 rounded-full shadow-neonBlue flex items-center gap-2 pointer-events-none transition-all duration-300">
                 <h2 class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
-                    STEFANINI <span class="text-stefaniniMagenta">GROUP</span> 
-                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-stefaniniCyan/10 text-stefaniniCyan border border-stefaniniCyan/30 font-semibold uppercase tracking-wider">TRT1 RJ</span>
+                    STEFANINI <span class="text-stefaniniBlue">GROUP</span> 
+                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-stefaniniGreen/10 text-stefaniniGreen border border-stefaniniGreen/30 font-semibold uppercase tracking-wider">TRT1 RJ</span>
                 </h2>
             </div>
             
@@ -263,7 +263,7 @@
         <div id="mermaid-sidebar" class="fixed right-0 top-[73px] h-[calc(100vh-73px)] w-96 bg-stefaniniMidnight border-l border-slate-800 p-6 flex flex-col gap-4 transform translate-x-full transition-transform duration-300 z-40 shadow-2xl">
             <div class="flex items-center justify-between">
                 <h3 class="font-bold text-white flex items-center gap-2 text-sm">
-                    <i class="fa-solid fa-code text-stefaniniCyan"></i> Código Mermaid.js Gerado
+                    <i class="fa-solid fa-code text-stefaniniGreen"></i> Código Mermaid.js Gerado
                 </h3>
                 <button onclick="toggleSidebar()" class="p-1 hover:bg-slate-800 rounded-md text-slate-400 hover:text-white transition">
                     <i class="fa-solid fa-xmark"></i>
@@ -271,9 +271,9 @@
             </div>
             <p class="text-xs text-slate-400">Copie o código abaixo para renderizar em editores compatíveis com Mermaid (como Notion, GitHub, etc.):</p>
             <div class="flex-1 relative bg-stefaniniDark rounded-lg border border-slate-800 overflow-hidden flex flex-col">
-                <textarea readonly id="mermaid-code" class="w-full flex-1 bg-transparent p-4 font-mono text-xs text-stefaniniCyan resize-none outline-none focus:ring-0"></textarea>
+                <textarea readonly id="mermaid-code" class="w-full flex-1 bg-transparent p-4 font-mono text-xs text-stefaniniGreen resize-none outline-none focus:ring-0"></textarea>
                 <div class="p-3 bg-stefaniniMidnight border-t border-slate-800 flex justify-end">
-                    <button onclick="copyMermaidCode()" class="px-4 py-2 bg-stefaniniCyan hover:bg-cyan-500 text-stefaniniDark text-xs font-bold rounded flex items-center gap-1.5 transition">
+                    <button onclick="copyMermaidCode()" class="px-4 py-2 bg-stefaniniGreen hover:bg-cyan-500 text-stefaniniDark text-xs font-bold rounded flex items-center gap-1.5 transition">
                         <i class="fa-solid fa-copy"></i> Copiar Código
                     </button>
                 </div>
@@ -288,7 +288,7 @@
             <!-- Modal Header -->
             <div class="px-6 py-4 bg-stefaniniCard border-b border-slate-800 flex justify-between items-center">
                 <h3 class="font-bold text-white text-lg flex items-center gap-2">
-                    <i class="fa-solid fa-user-gear text-stefaniniMagenta"></i> Configurar Membro
+                    <i class="fa-solid fa-user-gear text-stefaniniBlue"></i> Configurar Membro
                 </h3>
                 <button onclick="closeModal()" class="text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg p-1.5 transition">
                     <i class="fa-solid fa-xmark"></i>
@@ -304,7 +304,7 @@
                             <i class="fa-solid fa-user text-slate-600 text-3xl"></i>
                         </div>
                         <input type="file" id="avatar-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
-                        <button onclick="document.getElementById('avatar-input').click()" class="absolute -bottom-2 -right-2 h-8 w-8 bg-stefaniniMagenta text-white rounded-lg flex items-center justify-center border-2 border-stefaniniMidnight hover:scale-105 transition shadow-neonMagenta" title="Enviar Foto">
+                        <button onclick="document.getElementById('avatar-input').click()" class="absolute -bottom-2 -right-2 h-8 w-8 bg-stefaniniBlue text-white rounded-lg flex items-center justify-center border-2 border-stefaniniMidnight hover:scale-105 transition shadow-neonBlue" title="Enviar Foto">
                             <i class="fa-solid fa-camera text-xs"></i>
                         </button>
                     </div>
@@ -321,15 +321,15 @@
                 <div class="flex flex-col gap-4 border-t border-slate-800 pt-4">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Nome Completo</label>
-                        <input type="text" id="edit-name" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniCyan rounded-lg text-white text-sm outline-none transition">
+                        <input type="text" id="edit-name" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniGreen rounded-lg text-white text-sm outline-none transition">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Cargo Operacional</label>
-                        <input type="text" id="edit-role" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniCyan rounded-lg text-white text-sm outline-none transition">
+                        <input type="text" id="edit-role" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniGreen rounded-lg text-white text-sm outline-none transition">
                     </div>
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Localidade de Alocação</label>
-                        <select id="edit-forum" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniCyan rounded-lg text-white text-sm outline-none transition">
+                        <select id="edit-forum" class="w-full px-3 py-2 bg-stefaniniDark border border-slate-800 hover:border-slate-700 focus:border-stefaniniGreen rounded-lg text-white text-sm outline-none transition">
                             <option value="rio">Rio de Janeiro</option>
                         </select>
                     </div>
@@ -339,13 +339,13 @@
             <!-- Modal Footer -->
             <div class="px-6 py-4 bg-stefaniniCard border-t border-slate-800 flex justify-end gap-3">
                 <button onclick="closeModal()" class="px-4 py-2 border border-slate-700 hover:bg-slate-800 text-slate-300 text-sm font-semibold rounded-lg transition">Cancelar</button>
-                <button onclick="saveMemberChanges()" class="px-4 py-2 bg-gradient-to-r from-stefaniniMagenta to-pink-600 text-white text-sm font-semibold rounded-lg transition shadow-md">Salvar Alterações</button>
+                <button onclick="saveMemberChanges()" class="px-4 py-2 bg-gradient-to-r from-stefaniniBlue to-pink-600 text-white text-sm font-semibold rounded-lg transition shadow-md">Salvar Alterações</button>
             </div>
         </div>
     </div>
 
     <!-- FLOATING TOAST -->
-    <div id="toast" class="fixed bottom-6 right-6 px-4 py-3 bg-stefaniniCyan text-stefaniniDark font-semibold rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+    <div id="toast" class="fixed bottom-6 right-6 px-4 py-3 bg-stefaniniGreen text-stefaniniDark font-semibold rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
         <i class="fa-solid fa-check-circle"></i>
         <span id="toast-msg">Mensagem rápida</span>
     </div>
@@ -362,28 +362,28 @@
             supervisora: {
                 id: 'N2',
                 name: 'Michele Vieira Avila',
-                role: 'Supervisora de Suporte',
+                role: 'Coordenadora de Operações',
                 location: 'Rio de Janeiro',
                 forumId: 'rio',
                 avatar: 'assets/imagens/Michele Vieira Avila/Michele Vieira Avila - Supervisor Suporte.png',
                 type: 'supervisao'
             },
             analistas: [
-                { id: 'A1', name: 'Amaro Costa da Nóbrega', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Amaro Costa da Nobrega/Amaro Costa da Nobrega - Analista de Suporte Jr.jpg' },
-                { id: 'A2', name: 'Anderson Martins Souza', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Anaderson Martins Souza/Anderson Martins Souza - Analkista de Suporte Jr.png' },
-                { id: 'A3', name: 'Daniele de Jesus Silva Lima', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Daniela de Jesus/Daniele de Jesus Silva Lima - Analkista de Suporte Jr.jpg' },
-                { id: 'A4', name: 'Diego Vieira Tranhaque', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Diego Vieira Tranhaque/Diego Vieira Tranhaque - Analkista de Suporte Jr.jpg' },
-                { id: 'A5', name: 'Ismael dos Santos da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Ismael dos Santos da Silva/Ismael dos Santos da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A6', name: 'Itaiguara de Souza Lima', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Itaiguara de Souza Lima/Itaiguara de Souza Lima - Analkista de Suporte Jr.jpg' },
-                { id: 'A7', name: 'Jessica Luiz da Silva Oliveira', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Jessica Luiza da Silva Oliveira/Jessica Luiza da Silva Oliveira  - Analkista de Suporte Jr.png' },
-                { id: 'A8', name: 'Lucas Marques Ximenes', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Lucas Marques Ximenes/Lucas Marques Ximenes - Analkista de Suporte Jr.png' },
-                { id: 'A9', name: 'Luiz Felipe Lamas da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Felipe Lamas da Silva/Luiz Felipe Lamas da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A10', name: 'Luiz Gustavo Marques da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Gustavo Marques da Silva/Luiz Gustavo Marques da Silva - Analkista de Suporte Jr.jpg' },
-                { id: 'A11', name: 'Renato Francisco da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Renato Francisco da Silva/Renato Francisco da Silva - Analkista de Suporte Jr.png' },
-                { id: 'A12', name: 'Rosemere Pinheiro da Silva', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Rosemere Pinheiro da Silva/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' },
-                { id: 'A13', name: 'Vanessa Oliveira', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vanessa Oliveira/Vanessa Oliveira - Analkista de Suporte Jr.jpg' },
-                { id: 'A14', name: 'Vicente Luis de Souza', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vicente Luis de Souza/Vicente Luis de Souza - Analkista de Suporte Jr.png' },
-                { id: 'A15', name: 'Vinicius dos Santos Estrella', role: 'Técnico de Suporte Local Jr', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vinicius dos Santos Estrella/Vinicius dos Santos Estrella - Analkista de Suporte Jr.jpg' }
+                { id: 'A1', name: 'Amaro Costa da Nóbrega', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Amaro Costa da Nobrega/Amaro Costa da Nobrega - Analista de Suporte Jr.jpg' },
+                { id: 'A2', name: 'Anderson Martins Souza', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Anaderson Martins Souza/Anderson Martins Souza - Analkista de Suporte Jr.png' },
+                { id: 'A3', name: 'Daniele de Jesus Silva Lima', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Daniela de Jesus/Daniele de Jesus Silva Lima - Analkista de Suporte Jr.jpg' },
+                { id: 'A4', name: 'Diego Vieira Tranhaque', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Diego Vieira Tranhaque/Diego Vieira Tranhaque - Analkista de Suporte Jr.jpg' },
+                { id: 'A5', name: 'Ismael dos Santos da Silva', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Ismael dos Santos da Silva/Ismael dos Santos da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A6', name: 'Itaiguara de Souza Lima', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Itaiguara de Souza Lima/Itaiguara de Souza Lima - Analkista de Suporte Jr.jpg' },
+                { id: 'A7', name: 'Jessica Luiz da Silva Oliveira', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Jessica Luiza da Silva Oliveira/Jessica Luiza da Silva Oliveira  - Analkista de Suporte Jr.png' },
+                { id: 'A8', name: 'Lucas Marques Ximenes', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Lucas Marques Ximenes/Lucas Marques Ximenes - Analkista de Suporte Jr.png' },
+                { id: 'A9', name: 'Luiz Felipe Lamas da Silva', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Felipe Lamas da Silva/Luiz Felipe Lamas da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A10', name: 'Luiz Gustavo Marques da Silva', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Luiz Gustavo Marques da Silva/Luiz Gustavo Marques da Silva - Analkista de Suporte Jr.jpg' },
+                { id: 'A11', name: 'Renato Francisco da Silva', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Renato Francisco da Silva/Renato Francisco da Silva - Analkista de Suporte Jr.png' },
+                { id: 'A12', name: 'Rosemere Pinheiro da Silva', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Rosemere Pinheiro da Silva/Rosemere Pinheiro da Silva - Analista de Suporte Jr.jpg' },
+                { id: 'A13', name: 'Vanessa Oliveira', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vanessa Oliveira/Vanessa Oliveira - Analkista de Suporte Jr.jpg' },
+                { id: 'A14', name: 'Vicente Luis de Souza', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vicente Luis de Souza/Vicente Luis de Souza - Analkista de Suporte Jr.png' },
+                { id: 'A15', name: 'Vinicius dos Santos Estrella', role: 'Técnico de Suporte I', forumId: 'rio', location: 'Rio de Janeiro', avatar: 'assets/imagens/Vinicius dos Santos Estrella/Vinicius dos Santos Estrella - Analkista de Suporte Jr.jpg' }
             ]
         };
 
@@ -416,18 +416,18 @@
             const container = document.getElementById('org-tree-root');
             
             // Reusable card generator helper
-            const makeCardHTML = (member, accentColor = 'stefaniniMagenta') => {
+            const makeCardHTML = (member, accentColor = 'stefaniniBlue') => {
                 const initials = member.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
                 const avatarStyle = member.avatar ? `background-image: url('${member.avatar}'); background-size: cover; background-position: center; border-style: solid;` : '';
                 const isDimmed = activeFilter !== 'all' && member.forumId !== activeFilter && member.type !== 'supervisao';
                 
                 // Check customized borders
-                let borderColor = 'border-stefaniniMagenta/30 hover:border-stefaniniMagenta';
-                let tagColor = 'bg-stefaniniMagenta/10 text-stefaniniMagenta border-stefaniniMagenta/20';
+                let borderColor = 'border-stefaniniBlue/30 hover:border-stefaniniBlue';
+                let tagColor = 'bg-stefaniniBlue/10 text-stefaniniBlue border-stefaniniBlue/20';
                 
-                if (accentColor === 'stefaniniCyan') {
-                    borderColor = 'border-stefaniniCyan/30 hover:border-stefaniniCyan';
-                    tagColor = 'bg-stefaniniCyan/10 text-stefaniniCyan border-stefaniniCyan/20';
+                if (accentColor === 'stefaniniGreen') {
+                    borderColor = 'border-stefaniniGreen/30 hover:border-stefaniniGreen';
+                    tagColor = 'bg-stefaniniGreen/10 text-stefaniniGreen border-stefaniniGreen/20';
                 } else if (accentColor === 'emerald-400') {
                     borderColor = 'border-emerald-500/30 hover:border-emerald-400';
                     tagColor = 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20';
@@ -462,45 +462,52 @@
                 `;
             };
 
-            // HTML structural composition for the tree (Michele as head, Stefanini banner above her head, analysts in 3 columns)
+            // HTML structural composition for the tree (Michele as head, Stefanini banner above her head, analysts in 4 columns)
             const size = teamData.analistas.length;
-            const colSize = Math.ceil(size / 3);
+            const colSize = Math.ceil(size / 4);
             const col1 = teamData.analistas.slice(0, colSize);
             const col2 = teamData.analistas.slice(colSize, colSize * 2);
-            const col3 = teamData.analistas.slice(colSize * 2);
+            const col3 = teamData.analistas.slice(colSize * 2, colSize * 3);
+            const col4 = teamData.analistas.slice(colSize * 3);
 
             let html = `
                 <ul>
                     <li class="flex flex-col items-center">
                         <!-- Banner Superior -->
-                        <div class="inline-flex flex-col items-center mb-6">
-                            <div class="px-8 py-3 bg-gradient-to-r from-stefaniniMidnight via-stefaniniCard to-stefaniniMidnight border border-stefaniniCyan/40 rounded-full shadow-neonCyan text-sm font-extrabold text-white tracking-widest uppercase flex items-center gap-2">
-                                <i class="fa-solid fa-sitemap text-stefaniniCyan"></i> Stefanini Group TRT1 RJ
+                        <div id="tree-banner" class="inline-flex flex-col items-center mb-6 ${isPresentation ? 'hidden' : ''}">
+                            <div class="px-8 py-3 bg-gradient-to-r from-stefaniniMidnight via-stefaniniCard to-stefaniniMidnight border border-stefaniniGreen/40 rounded-full shadow-neonGreen text-sm font-extrabold text-white tracking-widest uppercase flex items-center gap-2">
+                                <i class="fa-solid fa-sitemap text-stefaniniGreen"></i> Stefanini Group TRT1 RJ
                             </div>
-                            <div class="h-8 w-0.5 bg-stefaniniMagenta"></div>
+                            <div class="h-8 w-0.5 bg-stefaniniBlue"></div>
                         </div>
                         
                         <div class="mb-8">
-                            ${makeCardHTML(teamData.supervisora, 'stefaniniMagenta')}
+                            ${makeCardHTML(teamData.supervisora, 'stefaniniBlue')}
                         </div>
                         
                         <ul class="level-operational level-operational-parent">
                             <!-- Coluna 1 -->
                             <li>
                                 <div class="flex flex-col gap-3 items-center">
-                                    ${col1.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
+                                    ${col1.map(a => makeCardHTML(a, 'stefaniniGreen')).join('')}
                                 </div>
                             </li>
                             <!-- Coluna 2 -->
                             <li>
                                 <div class="flex flex-col gap-3 items-center">
-                                    ${col2.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
+                                    ${col2.map(a => makeCardHTML(a, 'stefaniniGreen')).join('')}
                                 </div>
                             </li>
                             <!-- Coluna 3 -->
                             <li>
                                 <div class="flex flex-col gap-3 items-center">
-                                    ${col3.map(a => makeCardHTML(a, 'stefaniniCyan')).join('')}
+                                    ${col3.map(a => makeCardHTML(a, 'stefaniniGreen')).join('')}
+                                </div>
+                            </li>
+                            <!-- Coluna 4 -->
+                            <li>
+                                <div class="flex flex-col gap-3 items-center">
+                                    ${col4.map(a => makeCardHTML(a, 'stefaniniGreen')).join('')}
                                 </div>
                             </li>
                         </ul>
@@ -518,10 +525,10 @@
                 const bId = btn.getAttribute('data-forum');
                 if (bId === forumId) {
                     btn.classList.remove('border-transparent', 'bg-stefaniniDark/30', 'text-slate-300');
-                    btn.classList.add('border-stefaniniCyan', 'bg-stefaniniDark/50', 'text-white');
+                    btn.classList.add('border-stefaniniGreen', 'bg-stefaniniDark/50', 'text-white');
                 } else {
                     btn.classList.add('border-transparent', 'bg-stefaniniDark/30', 'text-slate-300');
-                    btn.classList.remove('border-stefaniniCyan', 'bg-stefaniniDark/50', 'text-white');
+                    btn.classList.remove('border-stefaniniGreen', 'bg-stefaniniDark/50', 'text-white');
                 }
             });
             renderOrganogram();
@@ -649,17 +656,17 @@
     end
 
     %% Estilização (Customização Identidade Visual Stefanini)
-    classDef default fill:#050b14,stroke:#06b6d4,stroke-width:2px,color:#ffffff;
-    classDef supervisao fill:#ec4899,stroke:#ffffff,stroke-width:2px,color:#050b14,font-weight:bold;
-    classDef predio fill:#0b192c,stroke:#06b6d4,stroke-width:1px,color:#06b6d4;
-    classDef banner fill:#050b14,stroke:#ec4899,stroke-width:3px,color:#ffffff,font-weight:bold;
+    classDef default fill:#050b14,stroke:#00bfa5,stroke-width:2px,color:#ffffff;
+    classDef supervisao fill:#005ebb,stroke:#ffffff,stroke-width:2px,color:#050b14,font-weight:bold;
+    classDef predio fill:#0b192c,stroke:#00bfa5,stroke-width:1px,color:#00bfa5;
+    classDef banner fill:#050b14,stroke:#005ebb,stroke-width:3px,color:#ffffff,font-weight:bold;
 
     class N1 banner;
     class N2 supervisao;
     class F1 predio;
     
     %% Configuração de Links (Conexões)
-    linkStyle default stroke:#ec4899,stroke-width:2px;`;
+    linkStyle default stroke:#005ebb,stroke-width:2px;`;
 
             mCodeArea.value = code;
         }
@@ -722,17 +729,19 @@
             const btnPresIcon = document.querySelector('#btn-presentation i');
             const presHeader = document.getElementById('presentation-header');
 
+            const treeBanner = document.getElementById('tree-banner');
             if (isPresentation) {
                 sidebar.classList.add('hidden');
                 header.classList.add('hidden');
                 presHeader.classList.remove('hidden');
+                if (treeBanner) treeBanner.classList.add('hidden');
                 btnPresText.innerText = "Restaurar Visão";
                 btnPresIcon.className = "fa-solid fa-compress";
                 // Append a tiny floating restorer button in presentation mode
                 const restorer = document.createElement('button');
                 restorer.id = 'restorer-float-btn';
                 restorer.onclick = togglePresentationMode;
-                restorer.className = "fixed bottom-6 left-6 px-4 py-2 bg-stefaniniMagenta text-white rounded-lg text-xs font-bold shadow-neonMagenta border border-white/20 hover:scale-105 transition z-50 flex items-center gap-2";
+                restorer.className = "fixed bottom-6 left-6 px-4 py-2 bg-stefaniniBlue text-white rounded-lg text-xs font-bold shadow-neonBlue border border-white/20 hover:scale-105 transition z-50 flex items-center gap-2";
                 restorer.innerHTML = '<i class="fa-solid fa-compress"></i> Sair da Apresentação';
                 document.body.appendChild(restorer);
                 document.getElementById('tree-viewport').classList.add('p-0');
@@ -740,6 +749,7 @@
                 sidebar.classList.remove('hidden');
                 header.classList.remove('hidden');
                 presHeader.classList.add('hidden');
+                if (treeBanner) treeBanner.classList.remove('hidden');
                 btnPresText.innerText = "Apresentação";
                 btnPresIcon.className = "fa-solid fa-expand";
                 const floatBtn = document.getElementById('restorer-float-btn');
@@ -757,11 +767,20 @@
                 let pptx = new PptxGenJS();
                 pptx.layout = 'LAYOUT_16X9';
 
+                // Helper to check if image can be fetched in this environment
+                const canAddImage = (avatar) => {
+                    if (!avatar) return false;
+                    if (avatar.startsWith('data:')) return true;
+                    // If protocol is file://, we cannot download local files via AJAX/fetch due to CORS
+                    if (window.location.protocol === 'file:') return false;
+                    return true;
+                };
+
                 // Helpers for color constants
                 const BG_COLOR = "050B14";       // Dark stefanini background
                 const MIDNIGHT_COLOR = "0B1329"; // Midnight card background
-                const MAGENTA_COLOR = "EC4899";  // Magenta accent
-                const CYAN_COLOR = "06B6D4";     // Cyan accent
+                const MAGENTA_COLOR = "005EBB";  // Magenta accent
+                const CYAN_COLOR = "00BFA5";     // Cyan accent
                 const WHITE_COLOR = "FFFFFF";    // White
                 const SLATE_COLOR = "94A3B8";    // Slate text
                 const EMERALD_COLOR = "34D399";  // Emerald green
@@ -829,7 +848,7 @@
                     const avatarX = x + (w - avatarW) / 2;
                     const avatarY = y + 0.3;
 
-                    if (member.avatar) {
+                    if (canAddImage(member.avatar)) {
                         try {
                             const imgConfig = {
                                 x: avatarX,
@@ -1019,7 +1038,7 @@
                 const superv = teamData.supervisora;
                 const supervInitials = superv.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
                 
-                if (superv.avatar) {
+                if (canAddImage(superv.avatar)) {
                     try {
                         const imgConfig = { x: 4.3, y: 1.5, w: 1.4, h: 1.4 };
                         if (superv.avatar.startsWith('data:')) {
@@ -1081,15 +1100,16 @@
                     fontSize: 11, bold: true, color: CYAN_COLOR, fontFace: "Arial"
                 });
 
-                // List the 15 analysts in three columns inside the box
-                const cols = [[], [], []];
+                // List the 15 analysts in four columns inside the box
+                const cols = [[], [], [], []];
                 teamData.analistas.forEach((a, i) => {
-                    cols[i % 3].push(`• ${a.name.split(' ').slice(0,2).join(' ')}`);
+                    cols[i % 4].push(`• ${a.name.split(' ').slice(0,2).join(' ')}`);
                 });
 
-                slide3.addText(cols[0].join('\n'), { x: 1.7, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
-                slide3.addText(cols[1].join('\n'), { x: 3.9, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
-                slide3.addText(cols[2].join('\n'), { x: 6.1, y: 3.1, w: 2.1, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[0].join('\n'), { x: 1.7, y: 3.1, w: 1.5, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[1].join('\n'), { x: 3.3, y: 3.1, w: 1.5, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[2].join('\n'), { x: 4.9, y: 3.1, w: 1.5, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
+                slide3.addText(cols[3].join('\n'), { x: 6.5, y: 3.1, w: 1.5, h: 1.8, fontSize: 8.5, color: WHITE_COLOR, fontFace: "Arial" });
 
                 // ==========================================
                 // SLIDE 4: Equipe Rio de Janeiro - Parte 1
